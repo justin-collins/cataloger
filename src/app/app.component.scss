@@ -1,0 +1,13 @@
+@import '~/../src/sass/includes';
+
+md-sidenav-layout{
+	height:100%;
+
+	/deep/ .md-sidenav-content{
+		transition:margin 400ms cubic-bezier(0.25, 0.8, 0.25, 1);
+	}
+}
+
+.md-sidenav{
+	padding:10px;
+}

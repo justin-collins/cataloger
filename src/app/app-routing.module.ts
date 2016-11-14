@@ -1,15 +1,15 @@
-import { CategoryComponent } from './category/category.component';
+import { GamesComponent } from './games/games.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 const routes: Routes = [{
   path: '',
-  redirectTo: '/category',
+  redirectTo: '/games',
   pathMatch: 'full'
 },
 {
-  path: 'category',
-  component: CategoryComponent
+  path: 'games',
+  component: GamesComponent
 }];
 
 @NgModule({

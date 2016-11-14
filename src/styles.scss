@@ -1,18 +1,22 @@
 @import '~@angular/material/core/theming/prebuilt/deeppurple-amber.css';
 
-@import '~bourbon/app/assets/stylesheets/_bourbon';
-@import '~bourbon-neat/app/assets/stylesheets/_neat';
 @import '~normalize.css';
+@import '~/../src/sass/includes';
 
 html,
 body,
-#container{
+#container,
+app-root{
 	@include size(100% 100%);
 }
 
 body{
 	margin:0;
 	padding:0;
+}
+
+app-root{
+	display:block;
 }
 
 #container{

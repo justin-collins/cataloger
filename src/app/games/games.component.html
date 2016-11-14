@@ -1,0 +1,11 @@
+<ul>
+	<li class="text" *ngFor="let item of items | async">
+		{{item.$value}}
+	</li>
+</ul>
+
+<h2 *ngIf="!items.length">No games found!</h2>
+
+<button md-fab class="add-btn">
+    <md-icon class="md-24">add</md-icon>
+</button>

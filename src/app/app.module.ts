@@ -7,8 +7,8 @@ import { MaterialModule } from '@angular/material';
 import { AngularFireModule } from 'angularfire2';
 
 import { AppComponent } from './app.component';
-import { CategoryComponent } from './category/category.component';
 import { RouterModule }   from '@angular/router';
+import { GamesComponent } from './games/games.component';
 
 export const firebaseConfig = {
 	apiKey: 'AIzaSyAzTB1c6OrjzK1e5ZcGgtb8AAtZqcrGFRE',
@@ -21,7 +21,7 @@ export const firebaseConfig = {
 @NgModule({
 	declarations: [
 		AppComponent,
-		CategoryComponent
+		GamesComponent
 	],
 	imports: [
 		BrowserModule,
