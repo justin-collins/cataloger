@@ -1,8 +1,8 @@
-<h1>
-	<ul>
-		<li class="text" *ngFor="let item of items | async">
-			{{item.$value}}
-		</li>
-	</ul>
+<md-sidenav-layout>
+	<md-sidenav #start mode="push" (open)="closeStartButton.focus()">
+		<button md-button #closeStartButton (click)="start.close()">Close</button>
+	</md-sidenav>
+
 	<router-outlet></router-outlet>
-</h1>
+	<button md-button (click)="start.open()">Open sidenav</button>
+</md-sidenav-layout>

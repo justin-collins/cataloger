@@ -1,2 +1,26 @@
-/* You can add global styles to this file, and also import other style files */
 @import '~@angular/material/core/theming/prebuilt/deeppurple-amber.css';
+
+@import '~bourbon/app/assets/stylesheets/_bourbon';
+@import '~bourbon-neat/app/assets/stylesheets/_neat';
+@import '~normalize.css';
+
+html,
+body,
+#container{
+	@include size(100% 100%);
+}
+
+body{
+	margin:0;
+	padding:0;
+}
+
+#container{
+	*{
+		box-sizing:border-box;
+	}
+
+	a{
+		text-decoration:none;
+	}
+}
