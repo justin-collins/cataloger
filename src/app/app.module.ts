@@ -1,3 +1,5 @@
+import { NewGameDialogComponent } from './shared/new-game-dialog/new-game-dialog.component';
+import { GamesService } from './shared/games.service';
 import { CatalogerRoutingModule } from './app-routing.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -21,7 +23,8 @@ export const firebaseConfig = {
 @NgModule({
 	declarations: [
 		AppComponent,
-		GamesComponent
+		GamesComponent,
+		NewGameDialogComponent
 	],
 	imports: [
 		BrowserModule,
@@ -32,7 +35,12 @@ export const firebaseConfig = {
 		MaterialModule.forRoot(),
 		AngularFireModule.initializeApp(firebaseConfig)
 	],
-	providers: [],
+	entryComponents:[
+		NewGameDialogComponent
+	],
+	providers: [
+		GamesService
+	],
 	bootstrap: [AppComponent]
 })
 export class AppModule { }

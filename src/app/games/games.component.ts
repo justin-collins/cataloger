@@ -1,5 +1,8 @@
+import { NewGameDialogComponent } from '../shared/new-game-dialog/new-game-dialog.component';
+import { GamesService } from '../shared/games.service';
 import { Component, OnInit } from '@angular/core';
-import { AngularFire, FirebaseListObservable } from 'angularfire2';
+import { FirebaseListObservable } from 'angularfire2';
+import { MdDialog, MdDialogRef } from '@angular/material';
 
 @Component({
 	selector: 'app-games',
@@ -7,16 +10,26 @@ import { AngularFire, FirebaseListObservable } from 'angularfire2';
 	styleUrls: ['./games.component.scss']
 })
 export class GamesComponent implements OnInit {
-	private items: FirebaseListObservable<any[]>;
+	private games: FirebaseListObservable<any[]>;
+	private dialogRef: MdDialogRef<NewGameDialogComponent>;
 
-	constructor(af: AngularFire) {
-		this.items = af.database.list('/items');
+	constructor(private gamesService:GamesService, public dialog: MdDialog) {
+		this.games = gamesService.getGames();
 
-		// const itemObservable = af.database.object('/item');
-		// itemObservable.set({ name: 'new name!'});
 	}
 
 	ngOnInit() {
 	}
 
+	public addGame(){
+		this.dialogRef = this.dialog.open(NewGameDialogComponent);
+
+		this.dialogRef.afterClosed().subscribe(result => {
+			this.dialogRef = null;
+
+			if (result){
+				this.gamesService.addGame(result);
+			}
+		});
+	}
 }

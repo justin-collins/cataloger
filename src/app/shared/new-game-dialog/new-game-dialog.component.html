@@ -1,0 +1,5 @@
+<input [(ngModel)]="newGame.title" placeholder="Title" /><br/>
+<input [(ngModel)]="newGame.played" placeholder="Played" /><br/>
+
+<button type="button" (click)="dialogRef.close(newGame)">Save</button>
+<button type="button" (click)="dialogRef.close(null)">Cancel</button>
