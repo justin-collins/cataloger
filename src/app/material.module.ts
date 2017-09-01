@@ -7,7 +7,10 @@ import {
 	MdIconModule,
 	MdToolbarModule,
 	MdListModule,
-	MdInputModule
+	MdInputModule,
+	MdCheckboxModule,
+	MdSelectModule,
+	MdTableModule
 } from '@angular/material';
 
 @NgModule({
@@ -17,7 +20,10 @@ import {
 		MdButtonModule,
 		MdIconModule,
 		MdToolbarModule,
-		MdListModule
+		MdListModule,
+		MdCheckboxModule,
+		MdSelectModule,
+		MdTableModule
 	],
 	exports: [
 		MdSidenavModule,
@@ -26,7 +32,10 @@ import {
 		MdIconModule,
 		MdToolbarModule,
 		MdListModule,
-		MdInputModule
+		MdInputModule,
+		MdCheckboxModule,
+		MdSelectModule,
+		MdTableModule
 	]
 })
 export class CatalogerMaterialModule { }

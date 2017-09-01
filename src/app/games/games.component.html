@@ -1,8 +1,22 @@
-<md-list>
-	<md-list-item *ngFor="let game of games | async">
-		{{game.title}} - {{game.played}}
-	</md-list-item>
-</md-list>
+<md-table #table [dataSource]="games">
+	<ng-container mdColumnDef="title">
+		<md-header-cell *mdHeaderCellDef> Title </md-header-cell>
+    	<md-cell *mdCellDef="let row"> {{row.title}} </md-cell>
+	</ng-container>
+
+	<ng-container mdColumnDef="played">
+		<md-header-cell *mdHeaderCellDef> Played </md-header-cell>
+    	<md-cell *mdCellDef="let row"> {{row.played}} </md-cell>
+	</ng-container>
+
+	<ng-container mdColumnDef="platform">
+		<md-header-cell *mdHeaderCellDef> Platform </md-header-cell>
+    	<md-cell *mdCellDef="let row"> {{getPlatformTitle(row.platform)}} </md-cell>
+	</ng-container>
+
+	<md-header-row *mdHeaderRowDef="displayedColumns"></md-header-row>
+    <md-row *mdRowDef="let row; columns: displayedColumns;"></md-row>
+</md-table>
 
 <h2 *ngIf="games.length === 0">No games found!</h2>
 

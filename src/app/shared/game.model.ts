@@ -1,4 +1,5 @@
 export class Game {
 	title: string;
-	played: string;
+	played: boolean;
+	platform: Object;
 }

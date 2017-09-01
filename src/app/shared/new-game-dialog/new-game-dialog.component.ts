@@ -1,3 +1,4 @@
+import { Platform } from './../platform';
 import { Game } from '../game.model';
 import { Component } from '@angular/core';
 import { MdDialogRef } from '@angular/material';
@@ -8,7 +9,8 @@ import { MdDialogRef } from '@angular/material';
 	styleUrls: ['./new-game-dialog.component.scss']
 })
 export class NewGameDialogComponent {
-	private newGame = new Game;
+	public newGame = new Game;
+	public platforms = Platform.LIST;
 
 	constructor(public dialogRef: MdDialogRef<NewGameDialogComponent>) {}
 
