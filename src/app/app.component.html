@@ -1,12 +1,12 @@
-<md-sidenav-layout>
-	<md-sidenav #nav mode="side" opened=true>
-		<button md-button #closeStartButton (click)="nav.toggle()">Close</button>
+<md-sidenav-container>
+	<md-sidenav #sidenav mode="side" opened="true">
+		<button md-button (click)="sidenav.toggle()">Close</button>
 	</md-sidenav>
 
 	<md-toolbar color="primary">
-		<button md-button (click)="nav.toggle()"><md-icon class="md-24">menu</md-icon></button>
+		<button md-button (click)="sidenav.toggle()"><md-icon class="md-24">menu</md-icon></button>
 		Games
 	</md-toolbar>
 
 	<router-outlet></router-outlet>
-</md-sidenav-layout>
+</md-sidenav-container>

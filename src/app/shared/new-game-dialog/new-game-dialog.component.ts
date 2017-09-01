@@ -3,7 +3,7 @@ import { Component } from '@angular/core';
 import { MdDialogRef } from '@angular/material';
 
 @Component({
-	selector: 'new-game-dialog',
+	selector: 'ctlg-new-game-dialog',
 	templateUrl: './new-game-dialog.component.html',
 	styleUrls: ['./new-game-dialog.component.scss']
 })

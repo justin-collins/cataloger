@@ -1,20 +1,20 @@
 import { Game } from './game.model';
 import { Injectable } from '@angular/core';
-import { AngularFire, FirebaseListObservable } from 'angularfire2';
+import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/database';
 
 @Injectable()
 export class GamesService {
 	private gameObservable;
 
-	constructor(private af: AngularFire) {
-		this.gameObservable = af.database.list('/games');
+	constructor(private af: AngularFireDatabase) {
+		this.gameObservable = af.list('/games');
 	}
 
-	public getGames():FirebaseListObservable<any[]>{
+	public getGames(): FirebaseListObservable<any[]> {
 		return this.gameObservable;
 	}
 
-	public addGame(newGame){
+	public addGame(newGame) {
 		this.gameObservable.push(newGame);
 	}
 }

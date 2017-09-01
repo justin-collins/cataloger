@@ -1,4 +1,4 @@
 export class Game {
-  title: string;
-  played: string;
+	title: string;
+	played: string;
 }

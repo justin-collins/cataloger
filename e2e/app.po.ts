@@ -6,6 +6,6 @@ export class CatalogerPage {
   }
 
   getParagraphText() {
-    return element(by.css('app-root h1')).getText();
+    return element(by.css('ctlg-root h1')).getText();
   }
 }

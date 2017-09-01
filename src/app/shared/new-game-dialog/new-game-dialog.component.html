@@ -1,5 +1,11 @@
-<input [(ngModel)]="newGame.title" placeholder="Title" /><br/>
-<input [(ngModel)]="newGame.played" placeholder="Played" /><br/>
+<form name="new-game">
+	<md-form-field>
+		<input mdInput [(ngModel)]="newGame.title" name="title" placeholder="Title" />
+	</md-form-field>
+	<md-form-field>
+		<input mdInput [(ngModel)]="newGame.played" name="played" placeholder="Played" />
+	</md-form-field>
 
-<button type="button" (click)="dialogRef.close(newGame)">Save</button>
-<button type="button" (click)="dialogRef.close(null)">Cancel</button>
+	<button md-button (click)="dialogRef.close(newGame)">Save</button>
+	<button md-button (click)="dialogRef.close(null)">Cancel</button>
+</form>
