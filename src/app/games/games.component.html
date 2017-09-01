@@ -4,7 +4,7 @@
 	</md-list-item>
 </md-list>
 
-<h2 *ngIf="!games.length">No games found!</h2>
+<h2 *ngIf="games.length === 0">No games found!</h2>
 
 <button md-fab class="add-btn" (click)="addGame()">
     <md-icon>add</md-icon>
