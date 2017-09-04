@@ -1,5 +1,5 @@
+import { EditGameDialogComponent } from './games/edit-game-dialog/edit-game-dialog.component';
 import { CatalogerMaterialModule } from './material.module';
-import { NewGameDialogComponent } from './shared/new-game-dialog/new-game-dialog.component';
 import { GamesService } from './shared/games.service';
 import { CatalogerRoutingModule } from './app-routing.module';
 import { BrowserModule } from '@angular/platform-browser';
@@ -19,7 +19,7 @@ import { GamesComponent } from './games/games.component';
 	declarations: [
 		AppComponent,
 		GamesComponent,
-		NewGameDialogComponent
+		EditGameDialogComponent
 	],
 	imports: [
 		BrowserModule,
@@ -33,7 +33,7 @@ import { GamesComponent } from './games/games.component';
 		CatalogerMaterialModule
 	],
 	entryComponents: [
-		NewGameDialogComponent
+		EditGameDialogComponent
 	],
 	providers: [
 		GamesService

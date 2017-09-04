@@ -14,7 +14,11 @@ export class GamesService {
 		return this.gameObservable;
 	}
 
-	public addGame(newGame) {
-		this.gameObservable.push(newGame);
+	public saveGame(newGame) {
+		if (newGame.$key) {
+			this.gameObservable.set(newGame.$key, newGame);
+		} else {
+			this.gameObservable.push(newGame);
+		}
 	}
 }

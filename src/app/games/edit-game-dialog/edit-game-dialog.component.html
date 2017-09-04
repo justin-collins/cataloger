@@ -1,0 +1,16 @@
+<form (ngSubmit)="saveGame()" #editGameForm="ngForm">
+	<md-form-field>
+		<input mdInput [(ngModel)]="game.title" name="title" placeholder="Title" required />
+	</md-form-field>
+
+	<md-checkbox [(ngModel)]="game.played" name="played">Played</md-checkbox>
+
+	<md-select [(ngModel)]="game.platform" name="platform" placeholder="Platform" required>
+		<md-option *ngFor="let platform of platforms" [value]="platform.key">
+			{{ platform.title }}
+		</md-option>
+	</md-select>
+
+	<button type="submit" md-button [disabled]="!editGameForm.form.valid">Save</button>
+	<button type="button" md-button (click)="dialogRef.close(null)">Cancel</button>
+</form>

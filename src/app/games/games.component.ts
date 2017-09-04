@@ -1,9 +1,10 @@
+import { Game } from './../shared/game.model';
+import { EditGameDialogComponent } from './edit-game-dialog/edit-game-dialog.component';
 import { Platform } from './../shared/platform';
-import { NewGameDialogComponent } from '../shared/new-game-dialog/new-game-dialog.component';
 import { GamesService } from '../shared/games.service';
 import { Component, OnInit } from '@angular/core';
 import { FirebaseListObservable } from 'angularfire2/database';
-import { MdDialog, MdDialogRef } from '@angular/material';
+import { MdDialog, MdDialogRef, MdDialogConfig } from '@angular/material';
 import {DataSource} from '@angular/cdk/collections';
 
 @Component({
@@ -12,10 +13,17 @@ import {DataSource} from '@angular/cdk/collections';
 	styleUrls: ['./games.component.scss']
 })
 export class GamesComponent implements OnInit {
-	private dialogRef: MdDialogRef<NewGameDialogComponent>;
+	private dialogRef: MdDialogRef<EditGameDialogComponent>;
+	private dialogConfig: MdDialogConfig = {
+		hasBackdrop: false,
+		position: {
+			bottom: '0px',
+			right: '100px'
+		}
+	};
 
 	public games: DataSource<any>;
-	public displayedColumns = ['title', 'played', 'platform'];
+	public displayedColumns = ['title', 'played', 'platform', 'actions'];
 
 	constructor(private gamesService: GamesService, public dialog: MdDialog) {
 		this.games = new GamesDataSource(gamesService);
@@ -23,20 +31,32 @@ export class GamesComponent implements OnInit {
 
 	ngOnInit() {}
 
-	public addGame() {
-		this.dialogRef = this.dialog.open(NewGameDialogComponent);
-
-		this.dialogRef.afterClosed().subscribe(result => {
-			this.dialogRef = null;
-
-			if (result) {
-				this.gamesService.addGame(result);
-			}
-		});
+	public openNewGamePanel(): void {
+		const game = new Game;
+		this.openGamePanel(game);
 	}
 
-	public getPlatformTitle(platformKey: string) {
+	public getPlatformTitle(platformKey: string): string {
 		return (Platform.lookup(platformKey)) ? Platform.lookup(platformKey).title : '';
+	}
+
+	public openGamePanel(game: Game): void {
+		if (this.dialogRef) return;
+
+		this.dialogConfig.data = game;
+
+		this.dialogRef = this.dialog.open(EditGameDialogComponent, this.dialogConfig);
+		this.dialogRef.afterClosed().subscribe(this.saveGame);
+	}
+
+	private saveGame = (game: Game): void => {
+		this.resetDialog();
+		this.gamesService.saveGame(game);
+	}
+
+	private resetDialog(): void {
+		this.dialogRef = null;
+		this.dialogConfig.data = null;
 	}
 }
 
