@@ -1,3 +1,4 @@
+import { ConfirmDialogComponent } from './../shared/confirm-dialog/confirm-dialog.component';
 import { Game } from './../shared/game.model';
 import { EditGameDialogComponent } from './edit-game-dialog/edit-game-dialog.component';
 import { Platform } from './../shared/platform';
@@ -13,8 +14,10 @@ import { DataSource } from '@angular/cdk/collections';
 	styleUrls: ['./games.component.scss']
 })
 export class GamesComponent implements OnInit {
-	private dialogRef: MdDialogRef<EditGameDialogComponent>;
-	private dialogConfig: MdDialogConfig = {
+	private confirmationDialogRef: MdDialogRef<ConfirmDialogComponent>;
+
+	private gameEditDialogRef: MdDialogRef<EditGameDialogComponent>;
+	private gameEditDialogConfig: MdDialogConfig = {
 		hasBackdrop: false,
 		position: {
 			bottom: '0px',
@@ -33,34 +36,53 @@ export class GamesComponent implements OnInit {
 
 	ngOnInit() { }
 
-	public openNewGamePanel(): void {
-		const game = new Game;
-		this.openGamePanel(game);
-	}
-
 	public getPlatformTitle(platformKey: string): string {
 		return (Platform.lookup(platformKey)) ? Platform.lookup(platformKey).title : '';
 	}
 
+	public openNewGamePanel(): void {
+		let game = new Game;
+		this.openGamePanel(game);
+	}
+
 	public openGamePanel(game: Game): void {
-		if (this.dialogRef) return;
+		this.gameEditDialogConfig.data = game;
 
-		this.dialogConfig.data = game;
-
-		this.dialogRef = this.dialog.open(EditGameDialogComponent, this.dialogConfig);
-		this.dialogRef.afterClosed().subscribe(this.saveGame);
+		this.gameEditDialogRef = this.dialog.open(EditGameDialogComponent, this.gameEditDialogConfig);
+		this.gameEditDialogRef.afterClosed().subscribe(this.saveGame);
 	}
 
 	private saveGame = (game: Game): void => {
-		this.resetDialog();
 		this.gamesService.saveGame(game).then(() => {
 			this.snackBar.open('Game Saved', '', { duration: 3000 });
 		});
 	}
 
-	private resetDialog(): void {
-		this.dialogRef = null;
-		this.dialogConfig.data = null;
+	public deleteConfirmation(game: Game): void {
+		let confirmMessage = `Are you sure you wish to delete the game "${game.title}"`;
+
+		this.confirmationDialogRef = this.dialog.open(ConfirmDialogComponent, { data: confirmMessage });
+
+		this.confirmationDialogRef.afterClosed().subscribe((result) => {
+			if (result) this.deleteGame(game);
+		});
+	}
+
+	private deleteGame(game: Game): void {
+		this.gamesService.deleteGame(game).then(() => this.showGameDeletedSnack());
+	}
+
+	private showGameDeletedSnack(): void {
+		let snackBarRef = this.snackBar.open('Game Deleted', 'Undo', { duration: 3000 });
+
+		snackBarRef.onAction().subscribe(this.undoDelete);
+	}
+
+	// TODO: Wait for material datatable to mature a bit before implementing
+	// currently very difficult to isolate individual rows with or without animation
+	// https://embed.plnkr.co/3QT7JQ/ good sample
+	private undoDelete(): void {
+
 	}
 }
 

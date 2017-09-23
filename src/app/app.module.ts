@@ -14,12 +14,14 @@ import { environment } from '../environments/environment';
 import { AppComponent } from './app.component';
 import { RouterModule } from '@angular/router';
 import { GamesComponent } from './games/games.component';
+import { ConfirmDialogComponent } from './shared/confirm-dialog/confirm-dialog.component';
 
 @NgModule({
 	declarations: [
 		AppComponent,
 		GamesComponent,
-		EditGameDialogComponent
+		EditGameDialogComponent,
+		ConfirmDialogComponent
 	],
 	imports: [
 		BrowserModule,
@@ -33,7 +35,8 @@ import { GamesComponent } from './games/games.component';
 		CatalogerMaterialModule
 	],
 	entryComponents: [
-		EditGameDialogComponent
+		EditGameDialogComponent,
+		ConfirmDialogComponent
 	],
 	providers: [
 		GamesService

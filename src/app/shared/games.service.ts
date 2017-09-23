@@ -14,11 +14,15 @@ export class GamesService {
 		return this.gameObservable;
 	}
 
-	public saveGame(newGame): Promise<any> {
-		if (newGame.$key) {
-			return this.gameObservable.set(newGame.$key, newGame);
+	public saveGame(game: Game): Promise<any> {
+		if (game.$key) {
+			return this.gameObservable.set(game.$key, game);
 		} else {
-			return this.gameObservable.push(newGame);
+			return this.gameObservable.push(game);
 		}
+	}
+
+	public deleteGame(game: Game): Promise<any> {
+		return this.gameObservable.remove(game.$key);
 	}
 }

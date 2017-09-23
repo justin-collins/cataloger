@@ -17,7 +17,8 @@
 	<ng-container mdColumnDef="actions">
 		<md-header-cell *mdHeaderCellDef> Actions </md-header-cell>
     	<md-cell *mdCellDef="let row">
-			<button md-icon-button (click)="openGamePanel(row)"><md-icon>mode_edit</md-icon></button>
+			<button md-icon-button (click)="openGamePanel(row)"><md-icon>edit</md-icon></button>
+			<button md-icon-button (click)="deleteConfirmation(row)"><md-icon>delete</md-icon></button>
 		</md-cell>
 	</ng-container>
 

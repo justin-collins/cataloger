@@ -1,5 +1,6 @@
 export class Game {
-	title: string;
-	played: boolean;
-	platform: Object;
+	public $key: string;
+	public title: string;
+	public played: boolean;
+	public platform: Object;
 }
