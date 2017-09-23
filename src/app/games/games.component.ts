@@ -4,8 +4,8 @@ import { Platform } from './../shared/platform';
 import { GamesService } from '../shared/games.service';
 import { Component, OnInit } from '@angular/core';
 import { FirebaseListObservable } from 'angularfire2/database';
-import { MdDialog, MdDialogRef, MdDialogConfig } from '@angular/material';
-import {DataSource} from '@angular/cdk/collections';
+import { MdDialog, MdDialogRef, MdDialogConfig, MdSnackBar } from '@angular/material';
+import { DataSource } from '@angular/cdk/collections';
 
 @Component({
 	selector: 'ctlg-games',
@@ -25,11 +25,13 @@ export class GamesComponent implements OnInit {
 	public games: DataSource<any>;
 	public displayedColumns = ['title', 'played', 'platform', 'actions'];
 
-	constructor(private gamesService: GamesService, public dialog: MdDialog) {
+	constructor(private gamesService: GamesService,
+		public dialog: MdDialog,
+		public snackBar: MdSnackBar) {
 		this.games = new GamesDataSource(gamesService);
 	}
 
-	ngOnInit() {}
+	ngOnInit() { }
 
 	public openNewGamePanel(): void {
 		const game = new Game;
@@ -51,7 +53,9 @@ export class GamesComponent implements OnInit {
 
 	private saveGame = (game: Game): void => {
 		this.resetDialog();
-		this.gamesService.saveGame(game);
+		this.gamesService.saveGame(game).then(() => {
+			this.snackBar.open('Game Saved', '', { duration: 3000 });
+		});
 	}
 
 	private resetDialog(): void {
@@ -69,5 +73,5 @@ export class GamesDataSource extends DataSource<any> {
 		return this.gamesService.getGames();
 	}
 
-	disconnect() {}
+	disconnect() { }
 }

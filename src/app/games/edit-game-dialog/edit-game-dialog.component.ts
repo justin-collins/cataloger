@@ -13,7 +13,7 @@ export class EditGameDialogComponent {
 	public platforms = Platform.LIST;
 
 	constructor(public dialogRef: MdDialogRef<EditGameDialogComponent>,
-				@Inject(MD_DIALOG_DATA) public game: Game) {}
+		@Inject(MD_DIALOG_DATA) public game: Game) { }
 
 	public saveGame() {
 		this.dialogRef.close(this.game);
