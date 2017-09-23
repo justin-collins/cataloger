@@ -1,3 +1,4 @@
+import { ProfileComponent } from './profile/profile.component';
 import { EditGameDialogComponent } from './games/edit-game-dialog/edit-game-dialog.component';
 import { GamesComponent } from './games/games.component';
 import { NgModule } from '@angular/core';
@@ -15,6 +16,10 @@ const routes: Routes = [{
 		{path: 'new', component: EditGameDialogComponent},
 		{path: 'edit/:gameId', component: EditGameDialogComponent}
 	]
+},
+{
+	path: 'profile',
+	component: ProfileComponent
 }];
 
 @NgModule({

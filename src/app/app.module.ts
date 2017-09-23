@@ -15,13 +15,17 @@ import { AppComponent } from './app.component';
 import { RouterModule } from '@angular/router';
 import { GamesComponent } from './games/games.component';
 import { ConfirmDialogComponent } from './shared/confirm-dialog/confirm-dialog.component';
+import { NavbarComponent } from './shared/navbar/navbar.component';
+import { ProfileComponent } from './profile/profile.component';
 
 @NgModule({
 	declarations: [
 		AppComponent,
 		GamesComponent,
 		EditGameDialogComponent,
-		ConfirmDialogComponent
+		ConfirmDialogComponent,
+		NavbarComponent,
+		ProfileComponent
 	],
 	imports: [
 		BrowserModule,

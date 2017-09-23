@@ -1,3 +1,20 @@
-<md-toolbar color="primary">Games</md-toolbar>
+<ctlg-navbar></ctlg-navbar>
 
-<router-outlet></router-outlet>
+<div class="mat-typography">
+	<md-sidenav-container>
+		<md-sidenav class="mat-elevation-z2" #sidenav mode="side" opened="true">
+			<md-nav-list>
+				<md-list-item routerLink="games" routerLinkActive="active">
+					<md-icon md-list-icon color="accent">gamepad</md-icon>
+					<h4 md-line>Games</h4>
+				</md-list-item>
+				<md-list-item routerLink="profile" routerLinkActive="active">
+					<md-icon md-list-icon color="accent">person</md-icon>
+					<h4 md-line>Profile</h4>
+				</md-list-item>
+			</md-nav-list>
+		</md-sidenav>
+
+		<router-outlet></router-outlet>
+	</md-sidenav-container>
+</div>
