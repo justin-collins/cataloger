@@ -1,6 +1,6 @@
 <form (ngSubmit)="saveGame()" #editGameForm="ngForm">
 	<md-form-field>
-		<input mdInput [(ngModel)]="game.title" name="title" placeholder="Title" required />
+		<input type="text" mdInput [(ngModel)]="game.title" name="title" placeholder="Title" required />
 	</md-form-field>
 
 	<md-checkbox [(ngModel)]="game.played" name="played">Played</md-checkbox>
