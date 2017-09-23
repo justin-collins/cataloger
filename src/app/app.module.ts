@@ -1,7 +1,7 @@
 import { EditGameDialogComponent } from './games/edit-game-dialog/edit-game-dialog.component';
 import { CatalogerMaterialModule } from './material.module';
 import { GamesService } from './shared/games.service';
-import { CatalogerRoutingModule } from './app-routing.module';
+import { CatalogerRoutingModule } from './app.routing';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';

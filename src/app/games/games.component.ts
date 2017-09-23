@@ -1,6 +1,6 @@
 import { GamesDataSource } from './games.datasource';
 import { ConfirmDialogComponent } from './../shared/confirm-dialog/confirm-dialog.component';
-import { Game } from './../shared/game.model';
+import { Game } from './../shared/game';
 import { EditGameDialogComponent } from './edit-game-dialog/edit-game-dialog.component';
 import { Platform } from './../shared/platform';
 import { GamesService } from '../shared/games.service';
