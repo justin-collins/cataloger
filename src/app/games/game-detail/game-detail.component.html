@@ -1,4 +1,28 @@
-<h1 class="mat-display-1">{{game.title}}</h1>
-<p>{{game.played}}</p>
-<p>{{game.platform}}</p>
-<button type="button" mat-raised-button color="warn" (click)="deleteConfirmation(game)">Delete</button>
+<mat-progress-bar *ngIf="!game" color="accent" mode="indeterminate"></mat-progress-bar>
+
+<div  *ngIf="game">
+	<mat-toolbar color="primary">
+		<ul class="controls">
+			<li>
+				<button mat-icon-button matTooltip="Mark as {{(game.played)? 'unplayed' : 'played'}}" (click)="togglePlayed()">
+					<mat-icon *ngIf="game.played">hourglass_full</mat-icon>
+					<mat-icon *ngIf="!game.played">hourglass_empty</mat-icon>
+				</button>
+				<button mat-icon-button matTooltip="More" [matMenuTriggerFor]="moreMenu">
+					<mat-icon>more_horiz</mat-icon>
+				</button>
+				<mat-menu #moreMenu="matMenu">
+					<button mat-menu-item (click)="deleteConfirmation(game)">
+						<mat-icon>delete</mat-icon>
+						<span>Delete</span>
+					</button>
+				</mat-menu>
+			</li>
+		</ul>
+	</mat-toolbar>
+
+	<div class="game-info">
+		<h1 class="mat-display-1">{{game.title}}</h1>
+		<p>{{game.platform.title}}</p>
+	</div>
+</div>

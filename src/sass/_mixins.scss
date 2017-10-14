@@ -1,0 +1,47 @@
+@mixin text-format($size:$fontSize, $lineHeight:null, $color:null, $position:null, $weight:null, $transform:null, $family:null){
+	font-size: $size;
+
+	@if $lineHeight == null{line-height: $size;}
+	@else {line-height: $lineHeight;}
+
+	@if $color != null {color: $color;}
+	@if $position != null {text-align: $position;}
+	@if $weight != null {font-weight: $weight;}
+	@if $transform != null {text-transform: $transform;}
+	@if $family != null {font-family: $family;}
+}
+
+@mixin unlistify{
+	list-style: none;
+	margin: 0;
+	padding: 0;
+
+	li {
+		margin: 0;
+		padding: 0;
+	}
+}
+
+@mixin mat-icon-size($size: 24px) {
+  font-size: $size;
+  height: $size;
+  width: $size;
+}
+
+// breakpoints
+$S:600px !default;
+$M:1100px !default;
+$L:1300px !default;
+
+// media queries
+@mixin MQ($canvas) {
+	@if $canvas == S {
+		@media only screen and (max-width: $S) { @content; }
+	}
+	@else if $canvas == M {
+		@media only screen and (max-width: $M) { @content; }
+	}
+	@else if $canvas == L {
+		@media only screen and (max-width: $L) { @content; }
+	}
+}

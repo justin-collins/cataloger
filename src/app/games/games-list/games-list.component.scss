@@ -1,6 +1,6 @@
 @import 'includes';
 
-:host{
+.games-content{
 	display:block;
 	padding:20px;
 }
@@ -8,6 +8,10 @@
 .add-btn{
 	display: inline-block;
 	@include position(fixed, null 20px 20px null);
+}
+
+h2 {
+	padding: 10px;
 }
 
 mat-table mat-row {

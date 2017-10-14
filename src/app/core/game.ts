@@ -5,4 +5,5 @@ export class Game {
 	public title: string;
 	public played: boolean;
 	public platform: Platform;
+	public tags: Array<string>;
 }

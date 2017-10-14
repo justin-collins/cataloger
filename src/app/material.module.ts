@@ -11,7 +11,10 @@ import {
 	MatCheckboxModule,
 	MatSelectModule,
 	MatTableModule,
-	MatSnackBarModule
+	MatSnackBarModule,
+	MatProgressBarModule,
+	MatTooltipModule,
+	MatMenuModule
 } from '@angular/material';
 
 @NgModule({
@@ -25,7 +28,10 @@ import {
 		MatCheckboxModule,
 		MatSelectModule,
 		MatTableModule,
-		MatSnackBarModule
+		MatSnackBarModule,
+		MatProgressBarModule,
+		MatTooltipModule,
+		MatMenuModule
 	],
 	exports: [
 		MatSidenavModule,
@@ -38,7 +44,10 @@ import {
 		MatCheckboxModule,
 		MatSelectModule,
 		MatTableModule,
-		MatSnackBarModule
+		MatSnackBarModule,
+		MatProgressBarModule,
+		MatTooltipModule,
+		MatMenuModule
 	]
 })
 export class CatalogerMaterialModule { }

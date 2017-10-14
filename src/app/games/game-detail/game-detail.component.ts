@@ -1,3 +1,4 @@
+import { MessagingService } from './../../core/messaging.service';
 import { ConfirmDialogComponent } from './../../shared/confirm-dialog/confirm-dialog.component';
 import { MatDialogRef, MatDialog, MatSnackBar } from '@angular/material';
 import { GameService } from './../../core/game.service';
@@ -11,7 +12,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 	styleUrls: ['./game-detail.component.scss']
 })
 export class GameDetailComponent implements OnInit {
-	public game: Game = <Game>{};
+	public game: Game;
 
 	private confirmationDialogRef: MatDialogRef<ConfirmDialogComponent>;
 
@@ -19,10 +20,16 @@ export class GameDetailComponent implements OnInit {
 				private dialog: MatDialog,
 				private snackBar: MatSnackBar,
 				private router: Router,
+				private messagingService: MessagingService,
 				private gameService: GameService) { }
 
 	ngOnInit() {
 		this.gameService.game(this.route.snapshot.params['gameKey']).subscribe(resp => this.game = resp);
+	}
+
+	public togglePlayed(): void {
+		this.game.played = !this.game.played;
+		this.gameService.save(this.game).then(this.gameSaved);
 	}
 
 	public deleteConfirmation(game: Game): void {
@@ -52,5 +59,13 @@ export class GameDetailComponent implements OnInit {
 	// https://embed.plnkr.co/3QT7JQ/ good sample
 	private undoDelete(): void {
 
+	}
+
+	private gameSaved = (): void => {
+		this.messagingService.message('Game Saved!');
+	}
+
+	private serviceError = (response): void => {
+		this.messagingService.error(response, 'There was a problem saving this game');
 	}
 }
