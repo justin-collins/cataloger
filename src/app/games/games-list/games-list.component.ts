@@ -25,7 +25,7 @@ export class GamesListComponent implements OnInit {
 	};
 
 	public games: DataSource<any>;
-	public displayedColumns = ['title', 'played', 'platform', 'actions'];
+	public displayedColumns = ['played', 'title', 'platform', 'actions'];
 
 	constructor(private gameService: GameService,
 		public dialog: MatDialog,

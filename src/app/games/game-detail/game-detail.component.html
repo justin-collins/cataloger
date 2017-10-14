@@ -2,6 +2,10 @@
 
 <div  *ngIf="game">
 	<mat-toolbar color="primary">
+		<button mat-icon-button matTooltip="Back to library" routerLink="/games">
+			<mat-icon>arrow_back</mat-icon>
+		</button>
+
 		<ul class="controls">
 			<li>
 				<button mat-icon-button matTooltip="Mark as {{(game.played)? 'unplayed' : 'played'}}" (click)="togglePlayed()">

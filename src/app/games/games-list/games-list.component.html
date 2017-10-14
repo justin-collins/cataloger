@@ -2,14 +2,17 @@
 
 <div class="games-content">
 	<mat-table #table [dataSource]="games" *ngIf="!games.isEmpty">
+		<ng-container matColumnDef="played">
+			<mat-header-cell *matHeaderCellDef class="playedColumn"> Played </mat-header-cell>
+			<mat-cell *matCellDef="let row" class="playedColumn">
+				<mat-icon *ngIf="row.played" matTooltip="Played">hourglass_full</mat-icon>
+				<mat-icon *ngIf="!row.played" matTooltip="Unplayed">hourglass_empty</mat-icon>
+			</mat-cell>
+		</ng-container>
+
 		<ng-container matColumnDef="title">
 			<mat-header-cell *matHeaderCellDef> Title </mat-header-cell>
 			<mat-cell *matCellDef="let row"> {{row.title}} </mat-cell>
-		</ng-container>
-
-		<ng-container matColumnDef="played">
-			<mat-header-cell *matHeaderCellDef> Played </mat-header-cell>
-			<mat-cell *matCellDef="let row"> {{row.played}} </mat-cell>
 		</ng-container>
 
 		<ng-container matColumnDef="platform">
@@ -20,7 +23,7 @@
 		<ng-container matColumnDef="actions">
 			<mat-header-cell *matHeaderCellDef> Actions </mat-header-cell>
 			<mat-cell *matCellDef="let row">
-				<button mat-icon-button><mat-icon>open_in_browser</mat-icon></button>
+				<button mat-icon-button matTooltip="Details"><mat-icon>open_in_browser</mat-icon></button>
 			</mat-cell>
 		</ng-container>
 
@@ -30,7 +33,7 @@
 
 	<h2 *ngIf="games.isEmpty && !games.isLoading">Your library is currently empty! Use the button in the bottom-right corner of your screen to start adding games.</h2>
 
-	<button mat-fab class="add-btn" (click)="openNewGamePanel()">
+	<button mat-fab class="add-btn" matTooltip="Add New Game" matTooltipPosition="left" (click)="openNewGamePanel()">
 		<mat-icon>add</mat-icon>
 	</button>
 </div>
