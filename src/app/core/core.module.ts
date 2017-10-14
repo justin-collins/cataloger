@@ -1,6 +1,6 @@
 import { MessagingService } from './messaging.service';
 import { CatalogerMaterialModule } from './../material.module';
-import { GamesService } from './games.service';
+import { GameService } from './game.service';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
@@ -11,7 +11,7 @@ import { CommonModule } from '@angular/common';
 	],
 	declarations: [],
 	providers: [
-		GamesService,
+		GameService,
 		MessagingService
 	]
 })

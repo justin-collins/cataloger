@@ -1,6 +1,6 @@
 import { SharedModule } from './shared/shared.module';
 import { CoreModule } from './core/core.module';
-import { EditGameDialogComponent } from './games/edit-game-dialog/edit-game-dialog.component';
+import { NewGameDialogComponent } from './games/new-game-dialog/new-game-dialog.component';
 import { CatalogerMaterialModule } from './material.module';
 import { CatalogerRoutingModule } from './app.routing';
 import { BrowserModule } from '@angular/platform-browser';
@@ -13,31 +13,34 @@ import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { environment } from '../environments/environment';
 
 import { AppComponent } from './app.component';
-import { RouterModule } from '@angular/router';
-import { GamesComponent } from './games/games.component';
 import { ProfileComponent } from './profile/profile.component';
+import { GamesListComponent } from './games/games-list/games-list.component';
+import { GameDetailComponent } from './games/game-detail/game-detail.component';
 
 @NgModule({
 	declarations: [
 		AppComponent,
-		GamesComponent,
-		EditGameDialogComponent,
-		ProfileComponent
+		NewGameDialogComponent,
+		ProfileComponent,
+		GamesListComponent,
+		GameDetailComponent
 	],
 	imports: [
 		BrowserModule,
 		FormsModule,
 		HttpModule,
-		RouterModule,
 		CoreModule,
 		SharedModule,
-		CatalogerRoutingModule,
 		BrowserAnimationsModule,
 		AngularFireModule.initializeApp(environment.firebase),
 		AngularFireDatabaseModule,
+		CatalogerRoutingModule,
 		CatalogerMaterialModule
 	],
 	providers: [],
-	bootstrap: [AppComponent]
+	bootstrap: [AppComponent],
+	entryComponents: [
+		NewGameDialogComponent
+	]
 })
 export class AppModule { }

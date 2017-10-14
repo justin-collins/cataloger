@@ -5,14 +5,14 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material';
 import { NgForm } from '@angular/forms';
 
 @Component({
-	selector: 'ctlg-edit-game-dialog',
-	templateUrl: './edit-game-dialog.component.html',
-	styleUrls: ['./edit-game-dialog.component.scss']
+	selector: 'ctlg-new-game-dialog',
+	templateUrl: './new-game-dialog.component.html',
+	styleUrls: ['./new-game-dialog.component.scss']
 })
-export class EditGameDialogComponent {
+export class NewGameDialogComponent {
 	public platforms = Platform.LIST;
 
-	constructor(public dialogRef: MatDialogRef<EditGameDialogComponent>,
+	constructor(public dialogRef: MatDialogRef<NewGameDialogComponent>,
 		@Inject(MAT_DIALOG_DATA) public game: Game) { }
 
 	public saveGame() {

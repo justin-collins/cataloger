@@ -1,14 +1,14 @@
 import { FirebaseListObservable } from 'angularfire2/database';
-import { GamesService } from './../core/games.service';
+import { GameService } from './../../core/game.service';
 import { DataSource } from '@angular/cdk/collections';
 
 export class GamesDataSource extends DataSource<any> {
-	constructor(private gamesService: GamesService) {
+	constructor(private gameService: GameService) {
 		super();
 	}
 
 	connect(): FirebaseListObservable<Element[]> {
-		return this.gamesService.getGames();
+		return this.gameService.games();
 	}
 
 	disconnect() { }
