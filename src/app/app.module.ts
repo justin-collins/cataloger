@@ -1,6 +1,7 @@
+import { SharedModule } from './shared/shared.module';
+import { CoreModule } from './core/core.module';
 import { EditGameDialogComponent } from './games/edit-game-dialog/edit-game-dialog.component';
 import { CatalogerMaterialModule } from './material.module';
-import { GamesService } from './shared/games.service';
 import { CatalogerRoutingModule } from './app.routing';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -14,8 +15,6 @@ import { environment } from '../environments/environment';
 import { AppComponent } from './app.component';
 import { RouterModule } from '@angular/router';
 import { GamesComponent } from './games/games.component';
-import { ConfirmDialogComponent } from './shared/confirm-dialog/confirm-dialog.component';
-import { NavbarComponent } from './shared/navbar/navbar.component';
 import { ProfileComponent } from './profile/profile.component';
 
 @NgModule({
@@ -23,8 +22,6 @@ import { ProfileComponent } from './profile/profile.component';
 		AppComponent,
 		GamesComponent,
 		EditGameDialogComponent,
-		ConfirmDialogComponent,
-		NavbarComponent,
 		ProfileComponent
 	],
 	imports: [
@@ -32,19 +29,15 @@ import { ProfileComponent } from './profile/profile.component';
 		FormsModule,
 		HttpModule,
 		RouterModule,
+		CoreModule,
+		SharedModule,
 		CatalogerRoutingModule,
 		BrowserAnimationsModule,
 		AngularFireModule.initializeApp(environment.firebase),
 		AngularFireDatabaseModule,
 		CatalogerMaterialModule
 	],
-	entryComponents: [
-		EditGameDialogComponent,
-		ConfirmDialogComponent
-	],
-	providers: [
-		GamesService
-	],
+	providers: [],
 	bootstrap: [AppComponent]
 })
 export class AppModule { }

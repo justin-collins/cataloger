@@ -1,5 +1,5 @@
-import { Platform } from '../../shared/platform';
-import { Game } from '../../shared/game';
+import { Platform } from '../../core/platform';
+import { Game } from '../../core/game';
 import { Component, Inject } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material';
 import { NgForm } from '@angular/forms';

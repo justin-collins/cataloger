@@ -1,9 +1,10 @@
+import { MessagingService } from './../core/messaging.service';
 import { GamesDataSource } from './games.datasource';
 import { ConfirmDialogComponent } from './../shared/confirm-dialog/confirm-dialog.component';
-import { Game } from './../shared/game';
+import { Game } from './../core/game';
 import { EditGameDialogComponent } from './edit-game-dialog/edit-game-dialog.component';
-import { Platform } from './../shared/platform';
-import { GamesService } from '../shared/games.service';
+import { Platform } from './../core/platform';
+import { GamesService } from '../core/games.service';
 import { Component, OnInit } from '@angular/core';
 import { MatDialog, MatDialogRef, MatDialogConfig, MatSnackBar } from '@angular/material';
 import { DataSource } from '@angular/cdk/collections';
@@ -30,7 +31,8 @@ export class GamesComponent implements OnInit {
 
 	constructor(private gamesService: GamesService,
 		public dialog: MatDialog,
-		public snackBar: MatSnackBar) {
+		public snackBar: MatSnackBar,
+		private messagingService: MessagingService) {
 		this.games = new GamesDataSource(gamesService);
 	}
 
@@ -53,8 +55,10 @@ export class GamesComponent implements OnInit {
 	}
 
 	private saveGame = (game: Game): void => {
+		if (!game) return;
+
 		this.gamesService.saveGame(game).then(() => {
-			this.snackBar.open('Game Saved', '', { duration: 3000 });
+			this.messagingService.message('Game Saved');
 		});
 	}
 
