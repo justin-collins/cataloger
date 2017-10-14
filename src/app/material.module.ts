@@ -1,44 +1,44 @@
 import { NgModule } from '@angular/core';
 
 import {
-	MdSidenavModule,
-	MdDialogModule,
-	MdButtonModule,
-	MdIconModule,
-	MdToolbarModule,
-	MdListModule,
-	MdInputModule,
-	MdCheckboxModule,
-	MdSelectModule,
-	MdTableModule,
-	MdSnackBarModule
+	MatSidenavModule,
+	MatDialogModule,
+	MatButtonModule,
+	MatIconModule,
+	MatToolbarModule,
+	MatListModule,
+	MatInputModule,
+	MatCheckboxModule,
+	MatSelectModule,
+	MatTableModule,
+	MatSnackBarModule
 } from '@angular/material';
 
 @NgModule({
 	imports: [
-		MdSidenavModule,
-		MdDialogModule,
-		MdButtonModule,
-		MdIconModule,
-		MdToolbarModule,
-		MdListModule,
-		MdCheckboxModule,
-		MdSelectModule,
-		MdTableModule,
-		MdSnackBarModule
+		MatSidenavModule,
+		MatDialogModule,
+		MatButtonModule,
+		MatIconModule,
+		MatToolbarModule,
+		MatListModule,
+		MatCheckboxModule,
+		MatSelectModule,
+		MatTableModule,
+		MatSnackBarModule
 	],
 	exports: [
-		MdSidenavModule,
-		MdDialogModule,
-		MdButtonModule,
-		MdIconModule,
-		MdToolbarModule,
-		MdListModule,
-		MdInputModule,
-		MdCheckboxModule,
-		MdSelectModule,
-		MdTableModule,
-		MdSnackBarModule
+		MatSidenavModule,
+		MatDialogModule,
+		MatButtonModule,
+		MatIconModule,
+		MatToolbarModule,
+		MatListModule,
+		MatInputModule,
+		MatCheckboxModule,
+		MatSelectModule,
+		MatTableModule,
+		MatSnackBarModule
 	]
 })
 export class CatalogerMaterialModule { }

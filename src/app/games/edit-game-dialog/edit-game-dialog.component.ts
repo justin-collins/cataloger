@@ -1,7 +1,7 @@
 import { Platform } from '../../shared/platform';
 import { Game } from '../../shared/game';
 import { Component, Inject } from '@angular/core';
-import { MD_DIALOG_DATA, MdDialogRef } from '@angular/material';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material';
 import { NgForm } from '@angular/forms';
 
 @Component({
@@ -12,8 +12,8 @@ import { NgForm } from '@angular/forms';
 export class EditGameDialogComponent {
 	public platforms = Platform.LIST;
 
-	constructor(public dialogRef: MdDialogRef<EditGameDialogComponent>,
-		@Inject(MD_DIALOG_DATA) public game: Game) { }
+	constructor(public dialogRef: MatDialogRef<EditGameDialogComponent>,
+		@Inject(MAT_DIALOG_DATA) public game: Game) { }
 
 	public saveGame() {
 		this.dialogRef.close(this.game);

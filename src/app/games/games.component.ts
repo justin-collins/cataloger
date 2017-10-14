@@ -5,7 +5,7 @@ import { EditGameDialogComponent } from './edit-game-dialog/edit-game-dialog.com
 import { Platform } from './../shared/platform';
 import { GamesService } from '../shared/games.service';
 import { Component, OnInit } from '@angular/core';
-import { MdDialog, MdDialogRef, MdDialogConfig, MdSnackBar } from '@angular/material';
+import { MatDialog, MatDialogRef, MatDialogConfig, MatSnackBar } from '@angular/material';
 import { DataSource } from '@angular/cdk/collections';
 
 @Component({
@@ -14,10 +14,10 @@ import { DataSource } from '@angular/cdk/collections';
 	styleUrls: ['./games.component.scss']
 })
 export class GamesComponent implements OnInit {
-	private confirmationDialogRef: MdDialogRef<ConfirmDialogComponent>;
+	private confirmationDialogRef: MatDialogRef<ConfirmDialogComponent>;
 
-	private gameEditDialogRef: MdDialogRef<EditGameDialogComponent>;
-	private gameEditDialogConfig: MdDialogConfig = {
+	private gameEditDialogRef: MatDialogRef<EditGameDialogComponent>;
+	private gameEditDialogConfig: MatDialogConfig = {
 		hasBackdrop: false,
 		position: {
 			bottom: '0px',
@@ -29,8 +29,8 @@ export class GamesComponent implements OnInit {
 	public displayedColumns = ['title', 'played', 'platform', 'actions'];
 
 	constructor(private gamesService: GamesService,
-		public dialog: MdDialog,
-		public snackBar: MdSnackBar) {
+		public dialog: MatDialog,
+		public snackBar: MatSnackBar) {
 		this.games = new GamesDataSource(gamesService);
 	}
 
