@@ -24,7 +24,13 @@ export class GameDetailComponent implements OnInit {
 				private gameService: GameService) { }
 
 	ngOnInit() {
-		this.gameService.game(this.route.snapshot.params['gameKey']).subscribe(resp => this.game = resp);
+		this.gameService.game(this.route.snapshot.params['gameKey']).subscribe(this.gameLoaded);
+	}
+
+	private gameLoaded = (resp: Game): void => {
+		if (!resp) this.returnToList();
+
+		this.game = resp;
 	}
 
 	public togglePlayed(): void {
@@ -44,8 +50,12 @@ export class GameDetailComponent implements OnInit {
 	private deleteGame(game: Game): void {
 		this.gameService.delete(game).then(() => {
 			this.showGameDeletedSnack();
-			this.router.navigate(['/games']);
+			this.returnToList();
 		});
+	}
+
+	private returnToList(): void {
+		this.router.navigate(['/games']);
 	}
 
 	private showGameDeletedSnack(): void {

@@ -17,7 +17,7 @@
 
 		<ng-container matColumnDef="platform">
 			<mat-header-cell *matHeaderCellDef> Platform </mat-header-cell>
-			<mat-cell *matCellDef="let row"> {{getPlatformTitle(row.platform)}} </mat-cell>
+			<mat-cell *matCellDef="let row"> {{getPlatformTitle(row.platform.key)}} </mat-cell>
 		</ng-container>
 
 		<ng-container matColumnDef="actions">
@@ -28,7 +28,7 @@
 		</ng-container>
 
 		<mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-		<mat-row *matRowDef="let row; columns: displayedColumns;" [routerLink]="['details', row.$key]"></mat-row>
+		<mat-row *matRowDef="let row; columns: displayedColumns;" [routerLink]="['details', row.id]"></mat-row>
 	</mat-table>
 
 	<h2 *ngIf="games.isEmpty && !games.isLoading">Your library is currently empty! Use the button in the bottom-right corner of your screen to start adding games.</h2>
