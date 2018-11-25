@@ -1,7 +1,8 @@
+import { AngularFireDatabase } from '@angular/fire/database';
 import { Game } from './game';
 import { Injectable } from '@angular/core';
-import { AngularFireDatabase } from 'angularfire2/database';
-import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 @Injectable()
 export class GameService {
@@ -10,13 +11,17 @@ export class GameService {
 	constructor(private af: AngularFireDatabase) {}
 
 	public games(): Observable<Game[]> {
-		return this.af.list<Game[]>(this.servicePath).snapshotChanges().map(resp => {
-			return resp.map(this.mapAFKeyToGame);
-		});
+		return this.af.list<Game[]>(this.servicePath).snapshotChanges().pipe(
+			map(resp => {
+				return resp.map(this.mapAFKeyToGame);
+			})
+		);
 	}
 
 	public game(gameKey: string): Observable<Game> {
-		return this.af.object<Game>(`${this.servicePath}/${gameKey}`).snapshotChanges().map(this.mapAFKeyToGame);
+		return this.af.object<Game>(`${this.servicePath}/${gameKey}`).snapshotChanges().pipe(
+			map(this.mapAFKeyToGame)
+		);
 	}
 
 	public save(game: Game): any {
